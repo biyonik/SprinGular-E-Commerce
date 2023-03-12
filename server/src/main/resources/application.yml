@@ -1,0 +1,44 @@
+
+spring:
+  application:
+    name: server
+  profiles:
+    default: true
+    active: default
+  main:
+    allow-bean-definition-overriding: true
+info:
+  component: SprinGular E-Commerce Server
+
+
+server:
+  port:
+    8080
+
+---
+spring:
+  config:
+    uri: http://localhost:8080
+  pathmatch:
+    matching-strategy: ant_path_matcher
+  security:
+    user:
+      name: user
+      password: $2a$10$aXfyeJ2QVayfMEaeRwon3eFnej8MKAA.fQ4mM5na9jVEAp/SITxZK
+  springdoc:
+    swagger-ui:
+      path: swagger-ui.html
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        default_schema: springular_commerce
+  datasource:
+    url: "jdbc:postgresql://localhost:5433/springular_commerce_app"
+    username: postgres
+    password: 12345
+  data:
+    rest:
+      base-path: /api/1.0
